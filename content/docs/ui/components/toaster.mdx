@@ -1,0 +1,103 @@
+---
+title: Toaster
+description: Theme-aware toast viewport powered by Sileo, with Cuelume sounds.
+---
+
+DX Toaster wraps [Sileo](https://sileo.aaryan.design/docs) — physics-based gooey toasts. Basic helpers in `lib/toast.ts` play [Cuelume](https://www.npmjs.com/package/cuelume) sounds by default. Place `<Toaster />` once in your root layout.
+
+## Basic
+
+Uses `toast` from `@/lib/toast` (Sileo + Cuelume).
+
+<ComponentPreview>
+  <ToasterDemo />
+</ComponentPreview>
+
+## Promise
+
+Chain loading → success/error from one promise, with loading/success/error sounds.
+
+<ComponentPreview>
+  <ToasterPromiseDemo />
+</ComponentPreview>
+
+## Custom design
+
+Sileo supports `fill`, `roundness`, and per-part `styles` ([docs](https://sileo.aaryan.design/docs)).
+
+<ComponentPreview>
+  <ToasterCustomDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="toaster" />
+
+Installs `sileo`, `motion`, and `cuelume`, plus `toaster.tsx`, `toaster.css`, and `lib/toast.ts`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="toaster" />
+
+## Setup
+
+```tsx
+import { Toaster } from '@/components/ui/toaster'
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <Toaster position="top-right" />
+      </body>
+    </html>
+  )
+}
+```
+
+## Usage
+
+```tsx
+import { toast } from '@/lib/toast'
+
+toast.success('Saved', { description: 'Your changes are live.' })
+toast.error('Failed', { description: 'Something went wrong.' })
+toast.warning('Careful')
+toast.info('Tip')
+
+await toast.promise(save(), {
+  loading: 'Saving…',
+  success: (data) => `Saved #${data.id}`,
+  error: 'Could not save',
+})
+```
+
+### Custom Sileo toast
+
+```tsx
+import { sileo } from 'sileo'
+
+sileo.success({
+  title: 'Brand toast',
+  description: 'Custom fill + rounded corners.',
+  fill: '#111827',
+  roundness: 22,
+  styles: {
+    title: 'text-white font-semibold',
+    description: 'text-zinc-300',
+    badge: 'bg-emerald-500 text-white',
+  },
+})
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `position` | `SileoPosition` | `"top-right"` | Default toast position |
+| `options` | `SileoOptions` | — | Shared Sileo defaults |
+
+Theme follows `document.documentElement` light/dark class automatically.

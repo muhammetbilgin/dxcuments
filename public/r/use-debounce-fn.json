@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-debounce-fn",
+  "title": "useDebounceFn",
+  "description": "Debounce a function with cancel and flush helpers.",
+  "dependencies": [
+    "es-toolkit"
+  ],
+  "registryDependencies": [
+    "use-latest",
+    "use-unmount"
+  ],
+  "files": [
+    {
+      "path": "registry/hooks/use-debounce-fn.ts",
+      "content": "import { debounce } from 'es-toolkit'\nimport { useMemo } from 'react'\nimport { useLatest } from '@/hooks/use-latest'\nimport { useUnmount } from '@/hooks/use-unmount'\nimport type { DebounceOptions } from 'es-toolkit'\n\nexport type { DebounceOptions }\n\nexport function useDebounceFn<Fn extends (...args: any[]) => any>(\n  fn: Fn,\n  debounceMs?: number,\n  options?: DebounceOptions,\n) {\n  const fnRef = useLatest(fn)\n\n  const debouncedFn = useMemo(\n    () =>\n      debounce(\n        (...args: Parameters<Fn>) => fnRef.current(...args),\n        debounceMs ?? 1000,\n        options,\n      ),\n    [],\n  )\n\n  useUnmount(() => debouncedFn.cancel())\n\n  return {\n    run: debouncedFn,\n    cancel: debouncedFn.cancel,\n    flush: debouncedFn.flush,\n  }\n}\n",
+      "type": "registry:hook",
+      "target": "hooks/use-debounce-fn.ts"
+    }
+  ],
+  "type": "registry:hook"
+}

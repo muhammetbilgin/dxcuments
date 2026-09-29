@@ -1,0 +1,6 @@
+{
+  "title": "DX Evex",
+  "description": "Event exchange documentation",
+  "root": true,
+  "pages": ["index"]
+}

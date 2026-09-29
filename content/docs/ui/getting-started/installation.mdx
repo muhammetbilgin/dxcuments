@@ -1,0 +1,67 @@
+---
+title: Installation
+description: Add the DX registry namespace and install components with the shadcn CLI.
+---
+
+DX UI components ship through a shadcn-compatible registry. Install them the same way you install shadcn/ui components.
+
+## Prerequisites
+
+Your project should already have:
+
+- A working `components.json` from shadcn
+- Tailwind CSS with CSS variables enabled
+- React / Next.js (or another RSC-compatible setup)
+
+## Add the `@dx` namespace
+
+Point the shadcn CLI at the DX registry. During local development:
+
+```bash
+pnpm dlx shadcn@latest registry add @dx=http://localhost:3000/r/{name}.json
+```
+
+Or add it manually in `components.json`:
+
+```json
+{
+  "registries": {
+    "@dx": "http://localhost:3000/r/{name}.json"
+  }
+}
+```
+
+Replace `http://localhost:3000` with your production docs URL when deployed.
+
+## Install a component
+
+<InstallCommand name="scroll-area" />
+
+Or paste the full item URL:
+
+```bash
+pnpm dlx shadcn@latest add http://localhost:3000/r/scroll-area.json
+```
+
+## Manual installation
+
+Prefer copy-paste? Open any component page and expand **Manual Installation** to copy dependencies and source.
+
+## Verify the registry
+
+Useful CLI checks while developing the registry:
+
+```bash
+pnpm dlx shadcn@latest list http://localhost:3000/r/registry.json
+pnpm dlx shadcn@latest view http://localhost:3000/r/scroll-area.json
+```
+
+## Rebuild after changes
+
+Whenever you change registry source files or `registry.json`:
+
+```bash
+pnpm registry:build
+```
+
+This regenerates static JSON under `public/r/`.

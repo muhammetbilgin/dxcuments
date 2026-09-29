@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-state",
+  "title": "Empty State",
+  "description": "Dashed empty-state panel with optional icon cluster and action.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "https://ui.shadcn.com/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/empty-state.tsx",
+      "content": "import * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { Button } from \"@/components/ui/button\";\r\nimport type { LucideIcon } from \"lucide-react\";\r\n\r\ninterface EmptyStateProps {\r\n  title?: string;\r\n  description?: string;\r\n  icons?: LucideIcon[];\r\n  action?: {\r\n    label?: string;\r\n    onClick: () => void;\r\n  };\r\n  className?: string;\r\n  actionLabel?: string;\r\n}\r\n\r\nexport function EmptyState({\r\n  icons = [],\r\n  action,\r\n  className,\r\n  title = \"Nothing here yet\",\r\n  description = \"Get started by creating your first item.\",\r\n  actionLabel = \"Get started\",\r\n}: EmptyStateProps) {\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"text-center bg-background border-border hover:border-border/80 name-remote\",\r\n        \"p-14 w-full rounded-xl border-2 border-dashed \",\r\n        \"transition duration-500 group hover:bg-muted/50 hover:duration-200\",\r\n        className\r\n      )}\r\n    >\r\n      <div className=\"flex isolate justify-center name-remote\">\r\n        {icons.length === 3 ? (\r\n          <>\r\n            <div className=\"bg-background size-12 grid place-items-center rounded-xl relative left-2.5 top-1.5 -rotate-6 shadow-lg ring-1 ring-border group-hover:-translate-x-5 group-hover:-rotate-12 group-hover:-translate-y-0.5 transition duration-500 group-hover:duration-200\">\r\n              {React.createElement(icons[0], {\r\n                className: \"w-6 h-6 text-muted-foreground\",\r\n              })}\r\n            </div>\r\n            <div className=\"bg-background size-12 grid place-items-center rounded-xl relative z-10 shadow-lg ring-1 ring-border group-hover:-translate-y-0.5 transition duration-500 group-hover:duration-200\">\r\n              {React.createElement(icons[1], {\r\n                className: \"w-6 h-6 text-muted-foreground\",\r\n              })}\r\n            </div>\r\n            <div className=\"bg-background size-12 grid place-items-center rounded-xl relative right-2.5 top-1.5 rotate-6 shadow-lg ring-1 ring-border group-hover:translate-x-5 group-hover:rotate-12 group-hover:-translate-y-0.5 transition duration-500 group-hover:duration-200\">\r\n              {React.createElement(icons[2], {\r\n                className: \"w-6 h-6 text-muted-foreground\",\r\n              })}\r\n            </div>\r\n          </>\r\n        ) : (\r\n          <div className=\"bg-background size-12 grid place-items-center rounded-xl shadow-lg ring-1 ring-border group-hover:-translate-y-0.5 transition duration-500 group-hover:duration-200\">\r\n            {icons[0] &&\r\n              React.createElement(icons[0], {\r\n                className: \"w-6 h-6 text-muted-foreground\",\r\n              })}\r\n          </div>\r\n        )}\r\n      </div>\r\n      <h2 className=\"mt-6 font-medium text-foreground\">{title}</h2>\r\n      <p className=\"mt-1 text-sm whitespace-pre-line text-muted-foreground\">\r\n        {description}\r\n      </p>\r\n      {action && (\r\n        <Button\r\n          onClick={action.onClick}\r\n          variant=\"outline\"\r\n          className={cn(\"mt-4\", \"shadow-sm active:shadow-none\")}\r\n        >\r\n          {actionLabel ?? action.label ?? \"Get started\"}\r\n        </Button>\r\n      )}\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ui/empty-state.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-title",
+  "title": "useTitle",
+  "description": "Reactively read and update document.title.",
+  "registryDependencies": [
+    "use-isomorphic-layout-effect"
+  ],
+  "files": [
+    {
+      "path": "registry/hooks/use-title.ts",
+      "content": "import { useEffect, useMemo, useRef, useState } from 'react'\r\nimport { useIsomorphicLayoutEffect } from '@/hooks/use-isomorphic-layout-effect'\r\nimport type { Dispatch, SetStateAction } from 'react'\r\n\r\nexport interface UseTitleOptions {\r\n  /**\r\n   * Observe external changes to `document.title`.\r\n   * @default false\r\n   */\r\n  observe?: boolean\r\n  /**\r\n   * Optional template for the final browser title.\r\n   * Use `%s` as the placeholder when providing a string template.\r\n   */\r\n  titleTemplate?: string | ((title: string) => string)\r\n}\r\n\r\nfunction getDocumentTitle(): string {\r\n  if (typeof document === 'undefined') {\r\n    return ''\r\n  }\r\n\r\n  return document.title\r\n}\r\n\r\nfunction parseTemplate(\r\n  titleTemplate?: string | ((title: string) => string),\r\n): (title: string) => string {\r\n  if (typeof titleTemplate === 'function') {\r\n    return titleTemplate\r\n  }\r\n\r\n  if (typeof titleTemplate === 'string' && titleTemplate.includes('%s')) {\r\n    return (title: string) => titleTemplate.replaceAll('%s', title)\r\n  }\r\n\r\n  return (title: string) => title\r\n}\r\n\r\n/**\r\n * Reactively read and update `document.title`.\r\n *\r\n * @param newTitle Optional initial/controlled title value.\r\n * @param options Hook options.\r\n */\r\nexport function useTitle(\r\n  newTitle?: string | null,\r\n  options: UseTitleOptions = {},\r\n): readonly [string, Dispatch<SetStateAction<string>>] {\r\n  const { observe = false, titleTemplate } = options\r\n  const formatTitle = useMemo(\r\n    () => parseTemplate(titleTemplate),\r\n    [titleTemplate],\r\n  )\r\n  const [title, setTitle] = useState<string>(\r\n    () => newTitle ?? getDocumentTitle(),\r\n  )\r\n  const lastInternalTitleRef = useRef<string | null>(null)\r\n\r\n  useEffect(() => {\r\n    if (newTitle == null) {\r\n      return\r\n    }\r\n\r\n    setTitle((currentTitle) =>\r\n      currentTitle === newTitle ? currentTitle : newTitle,\r\n    )\r\n  }, [newTitle])\r\n\r\n  useIsomorphicLayoutEffect(() => {\r\n    if (typeof document === 'undefined') {\r\n      return\r\n    }\r\n\r\n    const nextDocumentTitle = formatTitle(title)\r\n    lastInternalTitleRef.current = nextDocumentTitle\r\n    if (document.title !== nextDocumentTitle) {\r\n      document.title = nextDocumentTitle\r\n    }\r\n  }, [formatTitle, title])\r\n\r\n  useEffect(() => {\r\n    if (!observe || typeof document === 'undefined') {\r\n      return\r\n    }\r\n\r\n    if (typeof MutationObserver === 'undefined') {\r\n      return\r\n    }\r\n\r\n    const observerTarget = document.head ?? document.documentElement\r\n    if (!observerTarget) {\r\n      return\r\n    }\r\n\r\n    const observer = new MutationObserver(() => {\r\n      const nextTitle = document.title\r\n      if (lastInternalTitleRef.current === nextTitle) {\r\n        return\r\n      }\r\n\r\n      setTitle((currentTitle) => {\r\n        return currentTitle === nextTitle ? currentTitle : nextTitle\r\n      })\r\n    })\r\n\r\n    observer.observe(observerTarget, {\r\n      childList: true,\r\n      subtree: true,\r\n      characterData: true,\r\n    })\r\n\r\n    return () => {\r\n      observer.disconnect()\r\n    }\r\n  }, [observe])\r\n\r\n  return [title, setTitle] as const\r\n}\r\n",
+      "type": "registry:hook",
+      "target": "hooks/use-title.ts"
+    }
+  ],
+  "type": "registry:hook"
+}

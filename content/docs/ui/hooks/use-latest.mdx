@@ -1,0 +1,23 @@
+---
+title: useLatest
+description: Keep a mutable ref synchronized with the latest value.
+---
+
+Always access the newest value from async callbacks without re-subscribing.
+
+## Install
+
+<InstallCommand name="use-latest" />
+
+## Usage
+
+```tsx
+import { useLatest } from '@/hooks/use-latest'
+
+export function Example({ onTick }: { onTick: () => void }) {
+  const onTickRef = useLatest(onTick)
+
+  // onTickRef.current always points at the latest callback
+  return null
+}
+```

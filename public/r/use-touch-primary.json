@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-touch-primary",
+  "title": "useTouchPrimary",
+  "description": "Detect whether the primary input method is touch.",
+  "files": [
+    {
+      "path": "registry/hooks/use-touch-primary.ts",
+      "content": "import { useEffect, useState } from \"react\";\r\n\r\nexport function useTouchPrimary() {\r\n  const [isTouchPrimary, setIsTouchPrimary] = useState(false);\r\n\r\n  useEffect(() => {\r\n    if (typeof window === \"undefined\") return;\r\n\r\n    const controller = new AbortController();\r\n    const { signal } = controller;\r\n\r\n    const handleTouch = () => {\r\n      const hasTouch = \"ontouchstart\" in window || navigator.maxTouchPoints > 0;\r\n      const prefersTouch = window.matchMedia(\"(pointer: coarse)\").matches;\r\n      setIsTouchPrimary(hasTouch && prefersTouch);\r\n    };\r\n\r\n    const mq = window.matchMedia(\"(pointer: coarse)\");\r\n    mq.addEventListener(\"change\", handleTouch, { signal });\r\n    window.addEventListener(\"pointerdown\", handleTouch, { signal });\r\n\r\n    handleTouch();\r\n\r\n    return () => controller.abort();\r\n  }, []);\r\n\r\n  return isTouchPrimary;\r\n}\r\n",
+      "type": "registry:hook",
+      "target": "hooks/use-touch-primary.ts"
+    }
+  ],
+  "type": "registry:hook"
+}

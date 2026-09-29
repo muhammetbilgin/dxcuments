@@ -1,0 +1,21 @@
+---
+title: useOs
+description: Detect the current operating system from the browser environment.
+---
+
+Detect macOS, iOS, Windows, Android, Linux, ChromeOS, or `undetermined`.
+
+## Install
+
+<InstallCommand name="use-os" />
+
+## Usage
+
+```tsx
+import { useOs } from '@/hooks/use-os'
+
+export function Example() {
+  const os = useOs()
+  return <p>OS: {os}</p>
+}
+```

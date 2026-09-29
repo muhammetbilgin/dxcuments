@@ -1,0 +1,4 @@
+{
+  "title": "Components",
+  "pages": ["scroll-area", "toaster", "empty-state", "responsive-dialog"]
+}

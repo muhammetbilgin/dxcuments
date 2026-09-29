@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-breakpoint",
+  "title": "useBreakpoint",
+  "description": "Track the current Tailwind breakpoint and compare against breakpoints.",
+  "files": [
+    {
+      "path": "registry/hooks/use-breakpoint.ts",
+      "content": "import { useCallback, useSyncExternalStore } from \"react\"\r\n\r\nexport const BREAKPOINTS = {\r\n  sm: 640,\r\n  md: 768,\r\n  lg: 1024,\r\n  xl: 1280,\r\n  \"2xl\": 1536,\r\n} as const\r\n\r\nexport type Breakpoint = \"base\" | keyof typeof BREAKPOINTS\r\n\r\nconst ORDER: Breakpoint[] = [\"base\", \"sm\", \"md\", \"lg\", \"xl\", \"2xl\"]\r\n\r\nconst query = (bp: keyof typeof BREAKPOINTS) =>\r\n  `(min-width: ${BREAKPOINTS[bp]}px)`\r\n\r\nfunction getCurrentBreakpoint(): Breakpoint {\r\n  let current: Breakpoint = \"base\"\r\n  for (const bp of ORDER.slice(1) as (keyof typeof BREAKPOINTS)[]) {\r\n    if (window.matchMedia(query(bp)).matches) current = bp\r\n  }\r\n  return current\r\n}\r\n\r\nfunction subscribe(callback: () => void) {\r\n  const lists = (Object.keys(BREAKPOINTS) as (keyof typeof BREAKPOINTS)[]).map(\r\n    (bp) => window.matchMedia(query(bp))\r\n  )\r\n  lists.forEach((mql) => mql.addEventListener(\"change\", callback))\r\n  return () =>\r\n    lists.forEach((mql) => mql.removeEventListener(\"change\", callback))\r\n}\r\n\r\nconst rank = (bp: Breakpoint) => ORDER.indexOf(bp)\r\n\r\ninterface UseBreakpointOptions {        \r\n  serverBreakpoint?: Breakpoint\r\n}\r\n\r\n/**\r\n *\r\n * @example\r\n * const { breakpoint, isAtLeast, isMobile } = useBreakpoint()\r\n * if (isAtLeast(\"lg\")) { ... }\r\n */\r\nexport function useBreakpoint({\r\n  serverBreakpoint = \"base\",\r\n}: UseBreakpointOptions = {}) {\r\n  const breakpoint = useSyncExternalStore(\r\n    subscribe,\r\n    getCurrentBreakpoint,\r\n    () => serverBreakpoint\r\n  )\r\n\r\n  const isAtLeast = useCallback(\r\n    (bp: Breakpoint) => rank(breakpoint) >= rank(bp),\r\n    [breakpoint]\r\n  )\r\n\r\n  const isBelow = useCallback(\r\n    (bp: Breakpoint) => rank(breakpoint) < rank(bp),\r\n    [breakpoint]\r\n  )\r\n\r\n  return {\r\n    breakpoint,\r\n    isAtLeast,\r\n    isBelow,\r\n    isMobile: isBelow(\"md\"),\r\n    isTablet: isAtLeast(\"md\") && isBelow(\"lg\"),\r\n    isDesktop: isAtLeast(\"lg\"),\r\n  }\r\n}",
+      "type": "registry:hook",
+      "target": "hooks/use-breakpoint.ts"
+    }
+  ],
+  "type": "registry:hook"
+}

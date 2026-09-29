@@ -1,0 +1,41 @@
+---
+title: Responsive Dialog
+description: Dialog on desktop, drawer on mobile.
+---
+
+Renders a Radix dialog above the desktop breakpoint and a drawer on smaller viewports. Depends on `use-is-desktop` plus shadcn `button`, `dialog`, and `drawer`.
+
+## Preview
+
+<ComponentPreview>
+  <ResponsiveDialogDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="responsive-dialog" />
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="responsive-dialog" />
+
+## Usage
+
+```tsx
+import { Button } from '@/components/ui/button'
+import { ResponsiveDialog } from '@/components/ui/responsive-dialog'
+
+export function Example() {
+  return (
+    <ResponsiveDialog
+      title="Edit profile"
+      description="Make changes to your profile here."
+      trigger={<Button variant="outline">Open</Button>}
+    >
+      <p className="text-sm text-muted-foreground">Form fields go here.</p>
+    </ResponsiveDialog>
+  )
+}
+```

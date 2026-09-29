@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toaster",
+  "title": "Toaster",
+  "description": "Theme-aware toast viewport powered by Sileo, with Cuelume sounds via toast helpers.",
+  "dependencies": [
+    "sileo",
+    "motion",
+    "cuelume"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/toaster.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useState } from \"react\"\nimport {\n  Toaster as SileoToaster,\n  type SileoOptions,\n  type SileoPosition,\n} from \"sileo\"\nimport \"sileo/styles.css\"\nimport \"./toaster.css\"\n\ninterface ToasterProps {\n  position?: SileoPosition\n  options?: SileoOptions\n}\n\nfunction useResolvedShellTheme(): \"light\" | \"dark\" {\n  const [theme, setTheme] = useState<\"light\" | \"dark\">(() =>\n    typeof document !== \"undefined\" &&\n    document.documentElement.classList.contains(\"dark\")\n      ? \"dark\"\n      : \"light\"\n  )\n\n  useEffect(() => {\n    const root = document.documentElement\n\n    function syncTheme() {\n      setTheme(root.classList.contains(\"dark\") ? \"dark\" : \"light\")\n    }\n\n    syncTheme()\n\n    const observer = new MutationObserver(syncTheme)\n    observer.observe(root, { attributes: true, attributeFilter: [\"class\"] })\n    return () => observer.disconnect()\n  }, [])\n\n  return theme\n}\n\nexport function Toaster({ position = \"top-right\", options }: ToasterProps) {\n  const theme = useResolvedShellTheme()\n  return <SileoToaster theme={theme} position={position} options={options} />\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/toaster.tsx"
+    },
+    {
+      "path": "registry/ui/toaster.css",
+      "content": "[data-sileo-viewport] {\r\n    z-index: 100;\r\n  }",
+      "type": "registry:file",
+      "target": "components/ui/toaster.css"
+    },
+    {
+      "path": "registry/lib/toast.ts",
+      "content": "import { play, type SoundName } from \"cuelume\"\nimport type { ReactNode } from \"react\"\nimport { sileo, type SileoPosition } from \"sileo\"\n\ninterface ToastOptions {\n  description?: ReactNode | string\n  duration?: number\n  icon?: ReactNode\n}\n\ntype ToastTone = \"success\" | \"error\" | \"warning\" | \"info\"\n\nconst TONE_SOUND: Record<ToastTone | \"loading\", SoundName> = {\n  success: \"success\",\n  error: \"error\",\n  warning: \"whisper\",\n  info: \"chime\",\n  loading: \"loading\",\n}\n\nfunction playTone(tone: ToastTone | \"loading\") {\n  play(TONE_SOUND[tone])\n}\n\nfunction show(tone: ToastTone, title: string, options?: ToastOptions) {\n  playTone(tone)\n  return sileo[tone]({\n    title,\n    description: options?.description,\n    duration: options?.duration,\n    icon: options?.icon,\n  })\n}\n\ntype PromiseMessage<T> = string | ((data: T) => string)\ntype PromiseErrorMessage = string | ((err: unknown) => string)\n\ninterface PromiseOptions<T> {\n  loading: string\n  success: PromiseMessage<T>\n  error: PromiseErrorMessage\n}\n\nfunction resolveMessage<T>(message: PromiseMessage<T>, data: T): string {\n  return typeof message === \"function\" ? message(data) : message\n}\n\nfunction resolveError(message: PromiseErrorMessage, err: unknown): string {\n  return typeof message === \"function\" ? message(err) : message\n}\n\nexport const toast = {\n  success(title: string, options?: ToastOptions) {\n    return show(\"success\", title, options)\n  },\n  error(title: string, options?: ToastOptions) {\n    return show(\"error\", title, options)\n  },\n  warning(title: string, options?: ToastOptions) {\n    return show(\"warning\", title, options)\n  },\n  info(title: string, options?: ToastOptions) {\n    return show(\"info\", title, options)\n  },\n  promise<T>(promise: Promise<T>, options: PromiseOptions<T>) {\n    playTone(\"loading\")\n    return sileo.promise(promise, {\n      loading: { title: options.loading },\n      success: (data) => {\n        playTone(\"success\")\n        return { title: resolveMessage(options.success, data) }\n      },\n      error: (err) => {\n        playTone(\"error\")\n        return { title: resolveError(options.error, err) }\n      },\n    })\n  },\n  dismiss(id: string) {\n    sileo.dismiss(id)\n  },\n  clear(position?: SileoPosition) {\n    sileo.clear(position)\n  },\n}\n",
+      "type": "registry:lib",
+      "target": "lib/toast.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

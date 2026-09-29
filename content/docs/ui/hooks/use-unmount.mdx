@@ -1,0 +1,24 @@
+---
+title: useUnmount
+description: Run a callback when the component unmounts.
+---
+
+Fire cleanup logic on unmount using a stable latest callback ref.
+
+## Install
+
+<InstallCommand name="use-unmount" />
+
+## Usage
+
+```tsx
+import { useUnmount } from '@/hooks/use-unmount'
+
+export function Example() {
+  useUnmount(() => {
+    console.log('unmounted')
+  })
+
+  return null
+}
+```

@@ -1,0 +1,26 @@
+---
+title: useBreakpoint
+description: Track the current Tailwind breakpoint and compare against breakpoints.
+---
+
+Track the active viewport breakpoint with helpers like `isAtLeast`, `isBelow`, and device flags.
+
+## Install
+
+<InstallCommand name="use-breakpoint" />
+
+## Usage
+
+```tsx
+import { useBreakpoint } from '@/hooks/use-breakpoint'
+
+export function Example() {
+  const { breakpoint, isAtLeast, isMobile } = useBreakpoint()
+
+  return (
+    <p>
+      {breakpoint} — {isMobile ? 'mobile' : isAtLeast('lg') ? 'desktop+' : 'tablet'}
+    </p>
+  )
+}
+```

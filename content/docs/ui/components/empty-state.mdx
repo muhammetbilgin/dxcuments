@@ -1,0 +1,43 @@
+---
+title: Empty State
+description: Dashed empty-state panel with optional icon cluster and action.
+---
+
+A bordered empty panel with hover motion on icon clusters.
+
+## Preview
+
+<ComponentPreview>
+  <EmptyStateDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="empty-state" />
+
+Requires shadcn `button` and `lucide-react`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="empty-state" />
+
+## Usage
+
+```tsx
+import { File, Folder, Search } from 'lucide-react'
+import { EmptyState } from '@/components/ui/empty-state'
+
+export function Example() {
+  return (
+    <EmptyState
+      title="No results"
+      description="Try a different filter."
+      icons={[File, Folder, Search]}
+      action={{ onClick: () => console.log('reset') }}
+      actionLabel="Clear filters"
+    />
+  )
+}
+```

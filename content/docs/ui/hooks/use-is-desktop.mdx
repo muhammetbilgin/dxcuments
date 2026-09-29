@@ -1,0 +1,21 @@
+---
+title: useIsDesktop
+description: Detect whether the viewport matches the desktop breakpoint.
+---
+
+Returns whether the viewport is at least `768px` wide.
+
+## Install
+
+<InstallCommand name="use-is-desktop" />
+
+## Usage
+
+```tsx
+import { useIsDesktop } from '@/hooks/use-is-desktop'
+
+export function Example() {
+  const isDesktop = useIsDesktop()
+  return <p>{isDesktop ? 'Desktop' : 'Mobile'}</p>
+}
+```

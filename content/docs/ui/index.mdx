@@ -1,0 +1,57 @@
+---
+title: Overview
+description: The DX design system — installable components distributed as a shadcn registry.
+---
+
+DX UI is the component library for the DX platform. Every component is documented here and can be installed into any shadcn-ready project with the CLI.
+
+## How it works
+
+1. Source lives under `registry/` (`ui`, `hooks`, `lib`, `examples`).
+2. `registry.json` describes each installable item.
+3. `pnpm registry:build` generates JSON payloads under `/r`.
+4. Consumers install with `pnpm dlx shadcn@latest add @dx/<name>`.
+
+## Learn more
+
+<Cards>
+  <Card title="Installation" href="/docs/ui/getting-started/installation">
+    Add the `@dx` registry namespace to your project.
+  </Card>
+  <Card title="Scroll Area" href="/docs/ui/components/scroll-area">
+    Adaptive scroll area with masks and native touch.
+  </Card>
+  <Card title="Toaster" href="/docs/ui/components/toaster">
+    Physics-based toasts powered by Sileo.
+  </Card>
+  <Card title="Hooks" href="/docs/ui/hooks/use-breakpoint">
+    Installable React hooks from the DX registry.
+  </Card>
+  <Card title="DX Gateway" href="/docs/gateway">
+    API gateway docs for the DX platform.
+  </Card>
+  <Card title="DX Evex" href="/docs/evex">
+    Event exchange docs for the DX platform.
+  </Card>
+</Cards>
+
+## Adding a component
+
+When you create a new component:
+
+1. Add source under `registry/ui/<name>.tsx`
+2. Register the item in `registry.json`
+3. Add an example under `registry/examples/`
+4. Document it in `content/docs/ui/components/<name>.mdx`
+5. Run `pnpm registry:build`
+6. Confirm `/r/<name>.json` and the docs page
+
+## Adding a hook
+
+When you create a new hook:
+
+1. Add source under `registry/hooks/<name>.ts`
+2. Register the item in `registry.json` with `type: "registry:hook"`
+3. Document it in `content/docs/ui/hooks/<name>.mdx`
+4. Run `pnpm registry:build`
+5. Confirm `/r/<name>.json` and the docs page

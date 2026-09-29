@@ -1,0 +1,28 @@
+---
+title: useTitle
+description: Reactively read and update document.title.
+---
+
+Read and write `document.title`, with optional templates and external observers.
+
+## Install
+
+<InstallCommand name="use-title" />
+
+## Usage
+
+```tsx
+import { useTitle } from '@/hooks/use-title'
+
+export function Example() {
+  const [title, setTitle] = useTitle('Dashboard', {
+    titleTemplate: '%s | DX',
+  })
+
+  return (
+    <button type="button" onClick={() => setTitle('Settings')}>
+      Current: {title}
+    </button>
+  )
+}
+```

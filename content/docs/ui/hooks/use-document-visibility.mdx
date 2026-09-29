@@ -1,0 +1,21 @@
+---
+title: useDocumentVisibility
+description: Reactively track document.visibilityState.
+---
+
+Subscribe to `document.visibilityState` with `useSyncExternalStore`.
+
+## Install
+
+<InstallCommand name="use-document-visibility" />
+
+## Usage
+
+```tsx
+import { useDocumentVisibility } from '@/hooks/use-document-visibility'
+
+export function Example() {
+  const visibility = useDocumentVisibility()
+  return <p>Tab is {visibility}</p>
+}
+```

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-is-desktop",
+  "title": "useIsDesktop",
+  "description": "Detect whether the viewport matches the desktop breakpoint.",
+  "files": [
+    {
+      "path": "registry/hooks/use-is-desktop.ts",
+      "content": "import { useEffect, useState } from \"react\"\r\n\r\nconst MD_QUERY = \"(min-width: 768px)\"\r\n\r\nexport function useIsDesktop() {\r\n  const [isDesktop, setIsDesktop] = useState(() =>\r\n    typeof window !== \"undefined\" ? window.matchMedia(MD_QUERY).matches : true\r\n  )\r\n\r\n  useEffect(() => {\r\n    const media = window.matchMedia(MD_QUERY)\r\n    function onChange() {\r\n      setIsDesktop(media.matches)\r\n    }\r\n    onChange()\r\n    media.addEventListener(\"change\", onChange)\r\n    return () => media.removeEventListener(\"change\", onChange)\r\n  }, [])\r\n\r\n  return isDesktop\r\n}\r\n",
+      "type": "registry:hook",
+      "target": "hooks/use-is-desktop.ts"
+    }
+  ],
+  "type": "registry:hook"
+}

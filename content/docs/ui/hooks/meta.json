@@ -1,0 +1,16 @@
+{
+  "title": "Hooks",
+  "pages": [
+    "use-breakpoint",
+    "use-debounce",
+    "use-debounce-fn",
+    "use-document-visibility",
+    "use-is-desktop",
+    "use-isomorphic-layout-effect",
+    "use-latest",
+    "use-os",
+    "use-title",
+    "use-touch-primary",
+    "use-unmount"
+  ]
+}

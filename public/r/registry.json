@@ -1,0 +1,252 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "dx",
+  "homepage": "http://localhost:3000",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "Shared utility helpers for the DX design system.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Adaptive scroll area with native touch scrolling, custom desktop scrollbars, and edge masks.",
+      "dependencies": ["@radix-ui/react-scroll-area"],
+      "registryDependencies": ["utils", "use-touch-primary"],
+      "files": [
+        {
+          "path": "registry/ui/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-area.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toaster",
+      "type": "registry:ui",
+      "title": "Toaster",
+      "description": "Theme-aware toast viewport powered by Sileo, with Cuelume sounds via toast helpers.",
+      "dependencies": ["sileo", "motion", "cuelume"],
+      "files": [
+        {
+          "path": "registry/ui/toaster.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toaster.tsx"
+        },
+        {
+          "path": "registry/ui/toaster.css",
+          "type": "registry:file",
+          "target": "components/ui/toaster.css"
+        },
+        {
+          "path": "registry/lib/toast.ts",
+          "type": "registry:lib",
+          "target": "lib/toast.ts"
+        }
+      ]
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "Empty State",
+      "description": "Dashed empty-state panel with optional icon cluster and action.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "utils",
+        "https://ui.shadcn.com/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/empty-state.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/empty-state.tsx"
+        }
+      ]
+    },
+    {
+      "name": "responsive-dialog",
+      "type": "registry:ui",
+      "title": "Responsive Dialog",
+      "description": "Dialog on desktop, drawer on mobile.",
+      "registryDependencies": [
+        "utils",
+        "use-is-desktop",
+        "https://ui.shadcn.com/r/button.json",
+        "https://ui.shadcn.com/r/dialog.json",
+        "https://ui.shadcn.com/r/drawer.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/responsive-dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/responsive-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "use-breakpoint",
+      "type": "registry:hook",
+      "title": "useBreakpoint",
+      "description": "Track the current Tailwind breakpoint and compare against breakpoints.",
+      "files": [
+        {
+          "path": "registry/hooks/use-breakpoint.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-breakpoint.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-debounce",
+      "type": "registry:hook",
+      "title": "useDebounce",
+      "description": "Debounce a value with configurable delay and options.",
+      "registryDependencies": ["use-debounce-fn"],
+      "files": [
+        {
+          "path": "registry/hooks/use-debounce.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-debounce.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-debounce-fn",
+      "type": "registry:hook",
+      "title": "useDebounceFn",
+      "description": "Debounce a function with cancel and flush helpers.",
+      "dependencies": ["es-toolkit"],
+      "registryDependencies": ["use-latest", "use-unmount"],
+      "files": [
+        {
+          "path": "registry/hooks/use-debounce-fn.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-debounce-fn.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-document-visibility",
+      "type": "registry:hook",
+      "title": "useDocumentVisibility",
+      "description": "Reactively track document.visibilityState.",
+      "files": [
+        {
+          "path": "registry/hooks/use-document-visibility.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-document-visibility.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-is-desktop",
+      "type": "registry:hook",
+      "title": "useIsDesktop",
+      "description": "Detect whether the viewport matches the desktop breakpoint.",
+      "files": [
+        {
+          "path": "registry/hooks/use-is-desktop.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-is-desktop.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-isomorphic-layout-effect",
+      "type": "registry:hook",
+      "title": "useIsomorphicLayoutEffect",
+      "description": "useLayoutEffect on the client, useEffect on the server.",
+      "files": [
+        {
+          "path": "registry/hooks/use-isomorphic-layout-effect.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-isomorphic-layout-effect.ts"
+        },
+        {
+          "path": "lib/isBrowser.ts",
+          "type": "registry:lib",
+          "target": "lib/isBrowser.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-latest",
+      "type": "registry:hook",
+      "title": "useLatest",
+      "description": "Keep a mutable ref synchronized with the latest value.",
+      "registryDependencies": ["use-isomorphic-layout-effect"],
+      "files": [
+        {
+          "path": "registry/hooks/use-latest.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-latest.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-os",
+      "type": "registry:hook",
+      "title": "useOs",
+      "description": "Detect the current operating system from the browser environment.",
+      "files": [
+        {
+          "path": "registry/hooks/use-os.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-os.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-title",
+      "type": "registry:hook",
+      "title": "useTitle",
+      "description": "Reactively read and update document.title.",
+      "registryDependencies": ["use-isomorphic-layout-effect"],
+      "files": [
+        {
+          "path": "registry/hooks/use-title.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-title.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-touch-primary",
+      "type": "registry:hook",
+      "title": "useTouchPrimary",
+      "description": "Detect whether the primary input method is touch.",
+      "files": [
+        {
+          "path": "registry/hooks/use-touch-primary.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-touch-primary.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-unmount",
+      "type": "registry:hook",
+      "title": "useUnmount",
+      "description": "Run a callback when the component unmounts.",
+      "registryDependencies": ["use-latest"],
+      "files": [
+        {
+          "path": "registry/hooks/use-unmount.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-unmount.ts"
+        }
+      ]
+    }
+  ]
+}

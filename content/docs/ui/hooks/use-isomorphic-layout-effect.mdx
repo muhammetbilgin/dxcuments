@@ -1,0 +1,24 @@
+---
+title: useIsomorphicLayoutEffect
+description: useLayoutEffect on the client, useEffect on the server.
+---
+
+SSR-safe layout effect. Also installs `lib/isBrowser.ts`.
+
+## Install
+
+<InstallCommand name="use-isomorphic-layout-effect" />
+
+## Usage
+
+```tsx
+import { useIsomorphicLayoutEffect } from '@/hooks/use-isomorphic-layout-effect'
+
+export function Example() {
+  useIsomorphicLayoutEffect(() => {
+    // Runs during layout on the client
+  }, [])
+
+  return null
+}
+```

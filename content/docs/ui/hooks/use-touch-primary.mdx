@@ -1,0 +1,21 @@
+---
+title: useTouchPrimary
+description: Detect whether the primary input method is touch.
+---
+
+Detect coarse pointer / touch-primary devices.
+
+## Install
+
+<InstallCommand name="use-touch-primary" />
+
+## Usage
+
+```tsx
+import { useTouchPrimary } from '@/hooks/use-touch-primary'
+
+export function Example() {
+  const isTouchPrimary = useTouchPrimary()
+  return <p>{isTouchPrimary ? 'Touch' : 'Pointer'}</p>
+}
+```

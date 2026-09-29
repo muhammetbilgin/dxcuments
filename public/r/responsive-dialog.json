@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "responsive-dialog",
+  "title": "Responsive Dialog",
+  "description": "Dialog on desktop, drawer on mobile.",
+  "registryDependencies": [
+    "utils",
+    "use-is-desktop",
+    "https://ui.shadcn.com/r/button.json",
+    "https://ui.shadcn.com/r/dialog.json",
+    "https://ui.shadcn.com/r/drawer.json"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/responsive-dialog.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\n\r\nimport { Button } from \"@/components/ui/button\"\r\nimport {\r\n  Dialog,\r\n  DialogContent,\r\n  DialogDescription,\r\n  DialogHeader,\r\n  DialogTitle,\r\n  DialogTrigger,\r\n} from \"@/components/ui/dialog\"\r\nimport {\r\n  Drawer,\r\n  DrawerClose,\r\n  DrawerContent,\r\n  DrawerDescription,\r\n  DrawerFooter,\r\n  DrawerHeader,\r\n  DrawerTitle,\r\n  DrawerTrigger,\r\n} from \"@/components/ui/drawer\"\r\nimport { useIsDesktop } from \"@/hooks/use-is-desktop\"\r\nimport { cn } from \"@/lib/utils\"\r\n\r\ninterface ResponsiveDialogProps {\r\n  children: React.ReactNode\r\n  trigger: React.ReactNode\r\n  title: string\r\n  description?: string\r\n  className?: string\r\n  contentClassName?: string\r\n}\r\n\r\nexport function ResponsiveDialog({\r\n  children,\r\n  trigger,\r\n  title,\r\n  description,\r\n  className,\r\n  contentClassName,\r\n}: ResponsiveDialogProps) {\r\n  const [open, setOpen] = React.useState(false)\r\n  const isDesktop = useIsDesktop()\r\n\r\n  if (isDesktop) {\r\n    return (\r\n      <Dialog open={open} onOpenChange={setOpen}>\r\n        <DialogTrigger asChild>{trigger}</DialogTrigger>\r\n        <DialogContent className={cn(\"sm:max-w-[425px]\", contentClassName)}>\r\n          <DialogHeader>\r\n            <DialogTitle>{title}</DialogTitle>\r\n            {description ? (\r\n              <DialogDescription>{description}</DialogDescription>\r\n            ) : null}\r\n          </DialogHeader>\r\n          <div className={className}>{children}</div>\r\n        </DialogContent>\r\n      </Dialog>\r\n    )\r\n  }\r\n\r\n  return (\r\n    <Drawer open={open} onOpenChange={setOpen}>\r\n      <DrawerTrigger asChild>{trigger}</DrawerTrigger>\r\n      <DrawerContent>\r\n        <DrawerHeader className=\"text-left\">\r\n          <DrawerTitle>{title}</DrawerTitle>\r\n          {description ? (\r\n            <DrawerDescription>{description}</DrawerDescription>\r\n          ) : null}\r\n        </DrawerHeader>\r\n        <div className={cn(\"px-4\", className)}>{children}</div>\r\n        <DrawerFooter className=\"pt-2\">\r\n          <DrawerClose asChild>\r\n            <Button variant=\"outline\">Cancel</Button>\r\n          </DrawerClose>\r\n        </DrawerFooter>\r\n      </DrawerContent>\r\n    </Drawer>\r\n  )\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/ui/responsive-dialog.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-document-visibility",
+  "title": "useDocumentVisibility",
+  "description": "Reactively track document.visibilityState.",
+  "files": [
+    {
+      "path": "registry/hooks/use-document-visibility.ts",
+      "content": "import { useSyncExternalStore } from 'react'\r\n\r\nconst DEFAULT_VISIBILITY_STATE: DocumentVisibilityState = 'visible'\r\n\r\nfunction subscribe(onStoreChange: () => void) {\r\n  if (typeof document === 'undefined') {\r\n    return () => {}\r\n  }\r\n\r\n  document.addEventListener('visibilitychange', onStoreChange, {\r\n    passive: true,\r\n  })\r\n\r\n  return () => {\r\n    document.removeEventListener('visibilitychange', onStoreChange)\r\n  }\r\n}\r\n\r\nfunction getSnapshot(): DocumentVisibilityState {\r\n  if (typeof document === 'undefined') {\r\n    return DEFAULT_VISIBILITY_STATE\r\n  }\r\n\r\n  return document.visibilityState\r\n}\r\n\r\nfunction getServerSnapshot(): DocumentVisibilityState {\r\n  return DEFAULT_VISIBILITY_STATE\r\n}\r\n\r\n/**\r\n * Reactively track `document.visibilityState`.\r\n *\r\n * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState\r\n * @returns The current document visibility state.\r\n */\r\nexport function useDocumentVisibility(): DocumentVisibilityState {\r\n  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)\r\n}\r\n",
+      "type": "registry:hook",
+      "target": "hooks/use-document-visibility.ts"
+    }
+  ],
+  "type": "registry:hook"
+}

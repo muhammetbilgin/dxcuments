@@ -1,0 +1,30 @@
+---
+title: useDebounce
+description: Debounce a value with configurable delay and options.
+---
+
+Debounce any value. Installs `use-debounce-fn` and its dependencies automatically.
+
+## Install
+
+<InstallCommand name="use-debounce" />
+
+## Usage
+
+```tsx
+import { useState } from 'react'
+import { useDebounce } from '@/hooks/use-debounce'
+
+export function Example() {
+  const [value, setValue] = useState('')
+  const debounced = useDebounce(value, 300)
+
+  return (
+    <input
+      value={value}
+      onChange={(event) => setValue(event.target.value)}
+      placeholder={`Debounced: ${debounced}`}
+    />
+  )
+}
+```

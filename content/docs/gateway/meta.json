@@ -1,0 +1,6 @@
+{
+  "title": "DX Gateway",
+  "description": "API gateway documentation",
+  "root": true,
+  "pages": ["index"]
+}

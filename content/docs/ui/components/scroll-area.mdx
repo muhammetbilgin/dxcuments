@@ -1,0 +1,61 @@
+---
+title: Scroll Area
+description: Adaptive scroll area with native touch scrolling, custom desktop scrollbars, and edge masks.
+---
+
+Inspired by [Lina](https://lina.sameer.sh/) — custom scrollbars on desktop, native scrolling on touch, plus adaptive edge masks.
+
+## Features
+
+<ComponentPreview className="p-0" align="start">
+  <div className="w-full p-6">
+    <ScrollAreaFeaturesDemo />
+  </div>
+</ComponentPreview>
+
+## Vertical
+
+<ComponentPreview>
+  <ScrollAreaVerticalDemo />
+</ComponentPreview>
+
+## Horizontal
+
+<ComponentPreview>
+  <ScrollAreaHorizontalDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="scroll-area" />
+
+Also installs `use-touch-primary` and `utils`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="scroll-area" />
+
+## Usage
+
+```tsx
+import { ScrollArea } from '@/components/ui/scroll-area'
+
+export function Example() {
+  return (
+    <ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
+      Long content goes here…
+    </ScrollArea>
+  )
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `maskHeight` | `number` | `30` | Edge mask size in px. Pass `0` to disable. |
+| `maskClassName` | `string` | — | Classes for mask overlays |
+| `viewportClassName` | `string` | — | Classes for the viewport |
+| `scrollHideDelay` | `number` | `0` | Desktop scrollbar hide delay (ms) |

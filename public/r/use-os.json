@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-os",
+  "title": "useOs",
+  "description": "Detect the current operating system from the browser environment.",
+  "files": [
+    {
+      "path": "registry/hooks/use-os.ts",
+      "content": "import { useEffect, useState } from 'react'\r\n\r\nexport type UseOSReturnValue =\r\n  | 'undetermined'\r\n  | 'macos'\r\n  | 'ios'\r\n  | 'windows'\r\n  | 'android'\r\n  | 'linux'\r\n  | 'chromeos'\r\n\r\nexport interface UseOsOptions {\r\n  /**\r\n   * Defer browser OS detection until after mount to avoid server/client mismatches.\r\n   * @default true\r\n   */\r\n  getValueInEffect?: boolean\r\n}\r\n\r\ninterface NavigatorWithUserAgentData extends Navigator {\r\n  userAgentData?: {\r\n    platform?: string\r\n  }\r\n}\r\n\r\nfunction getPlatform(): string {\r\n  if (typeof navigator === 'undefined') {\r\n    return ''\r\n  }\r\n\r\n  const nav = navigator as NavigatorWithUserAgentData\r\n\r\n  return (nav.userAgentData?.platform ?? navigator.platform ?? '').toLowerCase()\r\n}\r\n\r\nfunction getUserAgent(): string {\r\n  if (typeof navigator === 'undefined') {\r\n    return ''\r\n  }\r\n\r\n  return navigator.userAgent.toLowerCase()\r\n}\r\n\r\n/**\r\n * Detect the current operating system from the browser environment.\r\n *\r\n * @param options Hook options.\r\n * @returns The detected operating system or `undetermined`.\r\n */\r\nexport function getOS(options: UseOsOptions = {}): UseOSReturnValue {\r\n  const { getValueInEffect = true } = options\r\n\r\n  if (getValueInEffect || typeof navigator === 'undefined') {\r\n    return 'undetermined'\r\n  }\r\n\r\n  const platform = getPlatform()\r\n  const userAgent = getUserAgent()\r\n  const maxTouchPoints = navigator.maxTouchPoints ?? 0\r\n\r\n  if (userAgent.includes('android')) {\r\n    return 'android'\r\n  }\r\n\r\n  if (\r\n    /iphone|ipad|ipod/.test(userAgent) ||\r\n    (platform === 'macintel' && maxTouchPoints > 1)\r\n  ) {\r\n    return 'ios'\r\n  }\r\n\r\n  if (userAgent.includes('cros')) {\r\n    return 'chromeos'\r\n  }\r\n\r\n  if (platform.includes('win') || userAgent.includes('win')) {\r\n    return 'windows'\r\n  }\r\n\r\n  if (platform.includes('mac') || userAgent.includes('mac')) {\r\n    return 'macos'\r\n  }\r\n\r\n  if (platform.includes('linux') || userAgent.includes('linux')) {\r\n    return 'linux'\r\n  }\r\n\r\n  return 'undetermined'\r\n}\r\n\r\n/**\r\n * Reactively detect the current operating system from `navigator.userAgent`.\r\n *\r\n * @param options Hook options.\r\n * @returns The detected operating system or `undetermined`.\r\n */\r\nexport function useOs(options: UseOsOptions = {}): UseOSReturnValue {\r\n  const { getValueInEffect = true } = options\r\n  const [os, setOs] = useState<UseOSReturnValue>(() =>\r\n    getOS({ getValueInEffect }),\r\n  )\r\n\r\n  useEffect(() => {\r\n    setOs(getOS({ getValueInEffect: false }))\r\n  }, [getValueInEffect])\r\n\r\n  return os\r\n}\r\n",
+      "type": "registry:hook",
+      "target": "hooks/use-os.ts"
+    }
+  ],
+  "type": "registry:hook"
+}

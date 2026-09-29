@@ -1,0 +1,29 @@
+---
+title: useDebounceFn
+description: Debounce a function with cancel and flush helpers.
+---
+
+Wrap a function with debounce, cancel, and flush. Depends on `es-toolkit`, `use-latest`, and `use-unmount`.
+
+## Install
+
+<InstallCommand name="use-debounce-fn" />
+
+## Usage
+
+```tsx
+import { useDebounceFn } from '@/hooks/use-debounce-fn'
+
+export function Example() {
+  const { run, cancel } = useDebounceFn((query: string) => {
+    console.log(query)
+  }, 300)
+
+  return (
+    <input
+      onChange={(event) => run(event.target.value)}
+      onBlur={() => cancel()}
+    />
+  )
+}
+```
