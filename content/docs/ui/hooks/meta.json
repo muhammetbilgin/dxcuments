@@ -2,6 +2,7 @@
   "title": "Hooks",
   "pages": [
     "use-breakpoint",
+    "use-controllable-state",
     "use-debounce",
     "use-debounce-fn",
     "use-document-visibility",

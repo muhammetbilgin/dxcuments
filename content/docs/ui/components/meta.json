@@ -1,4 +1,11 @@
 {
   "title": "Components",
-  "pages": ["scroll-area", "toaster", "empty-state", "responsive-dialog"]
+  "pages": [
+    "scroll-area",
+    "toaster",
+    "empty-state",
+    "responsive-dialog",
+    "elastic-slider",
+    "middle-truncation"
+  ]
 }

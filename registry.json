@@ -75,6 +75,35 @@
       ]
     },
     {
+      "name": "elastic-slider",
+      "type": "registry:ui",
+      "title": "Elastic Slider",
+      "description": "Rubber-band slider with hash marks, keyboard control, and a handle that dodges the label.",
+      "dependencies": ["motion"],
+      "registryDependencies": ["utils", "use-controllable-state"],
+      "files": [
+        {
+          "path": "registry/ui/elastic-slider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/elastic-slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "middle-truncation",
+      "type": "registry:ui",
+      "title": "Middle Truncation",
+      "description": "Truncates text in the middle so the start and end stay visible.",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/ui/middle-truncation.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/middle-truncation.tsx"
+        }
+      ]
+    },
+    {
       "name": "responsive-dialog",
       "type": "registry:ui",
       "title": "Responsive Dialog",
@@ -104,6 +133,19 @@
           "path": "registry/hooks/use-breakpoint.ts",
           "type": "registry:hook",
           "target": "hooks/use-breakpoint.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-controllable-state",
+      "type": "registry:hook",
+      "title": "useControllableState",
+      "description": "Support controlled and uncontrolled state with one setter.",
+      "files": [
+        {
+          "path": "registry/hooks/use-controllable-state.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-controllable-state.ts"
         }
       ]
     },

@@ -1,0 +1,57 @@
+---
+title: Elastic Slider
+description: Rubber-band slider with hash marks, keyboard control, and a handle that dodges the label.
+---
+
+A labeled slider that stretches past its bounds while dragging, snaps toward deciles, and keeps the handle out of the label and value. Depends on `motion` and `use-controllable-state`.
+
+## Preview
+
+<ComponentPreview>
+  <ElasticSliderDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="elastic-slider" />
+
+Also installs `use-controllable-state` and `utils`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="elastic-slider" />
+
+## Usage
+
+```tsx
+import { ElasticSlider } from '@/components/ui/elastic-slider'
+
+export function Example() {
+  return (
+    <ElasticSlider
+      label="Volume"
+      min={0}
+      max={100}
+      step={1}
+      defaultValue={72}
+      formatValue={(value) => `${Math.round(value)}%`}
+    />
+  )
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | — | Text shown inside the track |
+| `value` | `number` | — | Controlled value |
+| `defaultValue` | `number` | `min` | Initial value when uncontrolled |
+| `onValueChange` | `(value: number) => void` | — | Called on drag, click, or key press |
+| `min` | `number` | `0` | Minimum value |
+| `max` | `number` | `1` | Maximum value |
+| `step` | `number` | `0.01` | Smallest increment |
+| `formatValue` | `(value: number) => string` | step-based `toFixed` | Formats the displayed value |
+| `aria-label` | `string` | `label` | Accessible name |

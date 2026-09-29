@@ -1,0 +1,47 @@
+---
+title: Middle Truncation
+description: Truncates text in the middle so the start and end stay visible.
+---
+
+Measures the container and cuts the string in the middle. Use `end` to keep a fixed suffix, or `minEnd` to keep at least that many characters at the end.
+
+## Preview
+
+<ComponentPreview>
+  <MiddleTruncationDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="middle-truncation" />
+
+Also installs `utils`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="middle-truncation" />
+
+## Usage
+
+```tsx
+import { MiddleTruncation } from '@/components/ui/middle-truncation'
+
+export function Example() {
+  return (
+    <MiddleTruncation end={4} className="max-w-48">
+      quarterly-report-final-v12-approved.pdf
+    </MiddleTruncation>
+  )
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `string` | — | Text to truncate |
+| `ellipsis` | `string` | `"..."` | Separator placed in the middle |
+| `end` | `number` | — | Characters always kept at the end. Cannot be combined with `minEnd` |
+| `minEnd` | `number` | — | Minimum characters kept at the end when splitting evenly. Cannot be combined with `end` |

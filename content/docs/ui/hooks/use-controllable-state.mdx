@@ -1,0 +1,46 @@
+---
+title: useControllableState
+description: Support controlled and uncontrolled state with one setter.
+---
+
+Returns the current value and a setter that writes local state when `prop` is omitted, or calls `onChange` when the component is controlled.
+
+## Preview
+
+<ComponentPreview>
+  <UseControllableStateDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="use-controllable-state" />
+
+## Usage
+
+```tsx
+import { useControllableState } from '@/hooks/use-controllable-state'
+
+export function Counter({ value, defaultValue = 0, onValueChange }) {
+  const [count, setCount] = useControllableState({
+    prop: value,
+    defaultProp: defaultValue,
+    onChange: onValueChange,
+    caller: 'Counter',
+  })
+
+  return (
+    <button type="button" onClick={() => setCount((current) => current + 1)}>
+      {count}
+    </button>
+  )
+}
+```
+
+## Params
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `prop` | `T \| undefined` | Controlled value. Omit it for uncontrolled mode |
+| `defaultProp` | `T` | Initial value when uncontrolled |
+| `onChange` | `(state: T) => void` | Called when the value changes |
+| `caller` | `string` | Component name used in the controlled/uncontrolled warning |
