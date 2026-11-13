@@ -6,6 +6,10 @@
     "empty-state",
     "responsive-dialog",
     "elastic-slider",
+    "tear-button",
+    "dynamic-dock",
+    "flick-card",
+    "receipt-printer",
     "middle-truncation"
   ]
 }

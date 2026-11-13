@@ -1,0 +1,55 @@
+---
+title: Receipt Printer
+description: Thermal printer that feeds a receipt you can pull and tear free.
+---
+
+A thermal-style printer that feeds a receipt line by line. Pull the hanging sheet or use Tear to free it; it falls with gravity. Defaults to printing when scrolled into view.
+
+## Preview
+
+<ComponentPreview>
+  <ReceiptPrinterDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="receipt-printer" />
+
+Also installs `utils`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="receipt-printer" />
+
+## Usage
+
+```tsx
+import ReceiptPrinter from '@/components/ui/receipt-printer'
+
+export function Example() {
+  return (
+    <ReceiptPrinter
+      merchant="Kokonut Coffee"
+      order="#4182"
+      onTear={() => console.log('torn')}
+    />
+  )
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `merchant` | `string` | `"Kokonut Coffee"` | Header name |
+| `order` | `string` | `"#4182"` | Order id on the receipt |
+| `date` | `string` | `"14 Oct 2026 · 08:42"` | Date line |
+| `items` | `ReceiptItem[]` | sample menu | Line items (`name`, `quantity`, `price`) |
+| `tax` | `number` | `0.08` | Tax rate |
+| `currency` | `string` | `"$"` | Currency prefix |
+| `autoPrint` | `boolean` | `true` | Print when scrolled into view |
+| `onPrint` | `() => void` | — | Called when a print starts |
+| `onTear` | `() => void` | — | Called when the sheet tears free |
+| `className` | `string` | — | Root class name |

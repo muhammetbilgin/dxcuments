@@ -90,6 +90,63 @@
       ]
     },
     {
+      "name": "tear-button",
+      "type": "registry:ui",
+      "title": "Tear Button",
+      "description": "Ticket-stub confirm control: tear the perforation to commit a destructive action.",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/ui/tear-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tear-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dynamic-dock",
+      "type": "registry:ui",
+      "title": "Dynamic Dock",
+      "description": "Figma-style tool dock that snaps to canvas edges, with flyouts and keyboard shortcuts.",
+      "dependencies": ["lucide-react", "motion"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/ui/dynamic-dock.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dynamic-dock.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flick-card",
+      "type": "registry:ui",
+      "title": "Flick Card",
+      "description": "Physics flip card you can drag, flick, click, or key to turn.",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/ui/flick-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flick-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "receipt-printer",
+      "type": "registry:ui",
+      "title": "Receipt Printer",
+      "description": "Thermal printer that feeds a receipt you can pull and tear free.",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/ui/receipt-printer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/receipt-printer.tsx"
+        }
+      ]
+    },
+    {
       "name": "middle-truncation",
       "type": "registry:ui",
       "title": "Middle Truncation",

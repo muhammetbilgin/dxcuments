@@ -26,6 +26,9 @@ const NOTES: Record<string, string> = {
   toaster: 'Powered by Sileo + Cuelume. Keep toaster.css next to toaster.tsx and use lib/toast.ts for basic toasts.',
   'empty-state':
     'Requires shadcn button and lucide-react in your project.',
+  'dynamic-dock':
+    'Requires lucide-react and motion. Export is Toolbar from dynamic-dock.',
+  'flick-card': 'Export is CardFlip from flick-card.',
   'responsive-dialog':
     'Requires use-is-desktop plus shadcn button, dialog, and drawer.',
   'use-debounce': 'Also install use-debounce-fn and its dependencies.',

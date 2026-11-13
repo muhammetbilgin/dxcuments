@@ -1,0 +1,50 @@
+---
+title: Dynamic Dock
+description: Figma-style tool dock that snaps to canvas edges, with flyouts and keyboard shortcuts.
+---
+
+A throw-able tool dock for canvas UIs. Drag the grip to fling it to any edge; nested tools open as flyouts; single-key shortcuts work while focus or pointer is on the canvas.
+
+## Preview
+
+<ComponentPreview>
+  <DynamicDockDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="dynamic-dock" />
+
+Requires `lucide-react` and `motion`. Also installs `utils`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="dynamic-dock" />
+
+## Usage
+
+```tsx
+import { Toolbar } from '@/components/ui/dynamic-dock'
+
+export function Example() {
+  return <Toolbar className="h-96 w-full rounded-lg border" />
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `tools` | `DockTool[]` | built-in set | Tool definitions; nest via `tools` for flyouts |
+| `value` | `string` | — | Controlled active tool id |
+| `defaultValue` | `string` | first leaf | Initial tool when uncontrolled |
+| `onValueChange` | `(toolId: string) => void` | — | Called when the active tool changes |
+| `defaultEdge` | `"top" \| "right" \| "bottom" \| "left"` | `"bottom"` | Starting canvas edge |
+| `onEdgeChange` | `(edge: DockEdge) => void` | — | Called when the dock snaps to a new edge |
+| `shortcuts` | `"scoped" \| "global" \| "off"` | `"scoped"` | When single-key shortcuts listen |
+| `ariaLabel` | `string` | `"Tools"` | Accessible name for the toolbar |
+| `className` | `string` | — | Canvas container classes |
+| `dockClassName` | `string` | — | Dock plate classes |
+| `children` | `ReactNode` | dot grid | Content drawn behind the dock |

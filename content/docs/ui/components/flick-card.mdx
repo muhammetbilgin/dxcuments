@@ -1,0 +1,53 @@
+---
+title: Flick Card
+description: Physics flip card you can drag, flick, click, or key to turn.
+---
+
+A two-sided card with spring physics. Drag or flick to spin it, click or press Enter/Space to flip. Ships with a default event ticket; pass `front` and `back` for custom faces.
+
+## Preview
+
+<ComponentPreview>
+  <FlickCardDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="flick-card" />
+
+Also installs `utils`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="flick-card" />
+
+## Usage
+
+```tsx
+import CardFlip from '@/components/ui/flick-card'
+
+export function Example() {
+  return (
+    <CardFlip
+      label="Event ticket"
+      onFlippedChange={(flipped) => console.log(flipped)}
+    />
+  )
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `front` | `ReactNode` | event ticket | Front face |
+| `back` | `ReactNode` | entry code / seat | Back face |
+| `flipped` | `boolean` | — | Controlled side; `true` shows the back |
+| `defaultFlipped` | `boolean` | `false` | Starting side when uncontrolled |
+| `onFlippedChange` | `(flipped: boolean) => void` | — | Called when the card turns |
+| `axis` | `"x" \| "y"` | `"y"` | Spin axis |
+| `label` | `string` | `"Event ticket"` | Accessible name |
+| `className` | `string` | — | Root class name |
+| `faceClassName` | `string` | — | Classes applied to both faces |

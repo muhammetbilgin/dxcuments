@@ -1,0 +1,55 @@
+---
+title: Tear Button
+description: Ticket-stub confirm control: tear the perforation to commit a destructive action.
+---
+
+A paper-ticket confirm control. Drag or press the stub until the perforation gives; `onConfirm` fires once the stub tears away.
+
+## Preview
+
+<ComponentPreview>
+  <TearButtonDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="tear-button" />
+
+Also installs `utils`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="tear-button" />
+
+## Usage
+
+```tsx
+import TearButton from '@/components/ui/tear-button'
+
+export function Example() {
+  return (
+    <TearButton
+      label="Delete workspace"
+      description="Tear off the stub to confirm"
+      onConfirm={() => console.log('deleted')}
+    />
+  )
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `tone` | `"default" \| "muted" \| "danger"` | `"default"` | Paper colour |
+| `icon` | `ReactNode` | trash icon | Chip icon before confirm |
+| `label` | `string` | `"Delete workspace"` | Primary label |
+| `description` | `string` | `"Tear off the stub to confirm"` | Supporting text |
+| `stubLabel` | `string` | `"Tear"` | Stub text while intact |
+| `confirmedLabel` | `string` | `"Workspace deleted"` | Label after tear |
+| `confirmedDescription` | `string` | `"Kept in trash for 30 days"` | Description after tear |
+| `onConfirm` | `() => void` | — | Called once when the stub tears away |
+| `resetAfter` | `number` | `2400` | ms before reprinting a fresh stub; `0` disables |
+| `className` | `string` | — | Root class name |

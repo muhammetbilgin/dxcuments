@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/hooks/use-debounce.ts",
-      "content": "import { useEffect, useState } from 'react'\nimport { useDebounceFn } from '@/hooks/use-debounce-fn'\nimport type { DebounceOptions } from '@/hooks/use-debounce-fn'\n\nexport function useDebounce<T>(\n  value: T,\n  debounceMs?: number,\n  options?: DebounceOptions,\n) {\n  const [debouncedValue, setDebouncedValue] = useState<T>(value)\n\n  const { run } = useDebounceFn(\n    () => {\n      setDebouncedValue(value)\n    },\n    debounceMs,\n    options,\n  )\n\n  useEffect(() => {\n    return run()\n  }, [value, run])\n\n  return debouncedValue\n}\n",
+      "content": "import { useEffect, useState } from 'react'\r\nimport { useDebounceFn } from '@/hooks/use-debounce-fn'\r\nimport type { DebounceOptions } from '@/hooks/use-debounce-fn'\r\n\r\nexport function useDebounce<T>(\r\n  value: T,\r\n  debounceMs?: number,\r\n  options?: DebounceOptions,\r\n) {\r\n  const [debouncedValue, setDebouncedValue] = useState<T>(value)\r\n\r\n  const { run } = useDebounceFn(\r\n    () => {\r\n      setDebouncedValue(value)\r\n    },\r\n    debounceMs,\r\n    options,\r\n  )\r\n\r\n  useEffect(() => {\r\n    return run()\r\n  }, [value, run])\r\n\r\n  return debouncedValue\r\n}\r\n",
       "type": "registry:hook",
       "target": "hooks/use-debounce.ts"
     }

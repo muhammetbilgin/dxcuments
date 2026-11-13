@@ -12,7 +12,7 @@
     },
     {
       "path": "lib/isBrowser.ts",
-      "content": "export const isBrowser = typeof window !== 'undefined'\n",
+      "content": "export const isBrowser = typeof window !== 'undefined'\r\n",
       "type": "registry:lib",
       "target": "lib/isBrowser.ts"
     }
