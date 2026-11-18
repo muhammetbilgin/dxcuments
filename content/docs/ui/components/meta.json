@@ -8,8 +8,10 @@
     "elastic-slider",
     "tear-button",
     "dynamic-dock",
-    "flick-card",
     "receipt-printer",
+    "floating-dock-menu",
+    "date-range-picker",
+    "json-explorer",
     "middle-truncation"
   ]
 }

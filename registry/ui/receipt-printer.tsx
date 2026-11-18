@@ -1,14 +1,5 @@
 "use client";
 
-/**
- * @author: @dorianbaffier
- * @description: Receipt Printer
- * @version: 1.0.0
- * @date: 2026-10-14
- * @license: MIT
- * @website: https://kokonutui.com
- * @github: https://github.com/kokonut-labs/kokonutui
- */
 
 import {
     type PointerEvent,
@@ -177,7 +168,7 @@ const MASK_RESTING = `${edge("bottom")}, linear-gradient(#000 0 0) 0 0 / 100% ca
 const MASK_TORN = `${edge("top")}, ${edge("bottom")}, ${FILL}`;
 
 export default function ReceiptPrinter({
-    merchant = "Kokonut Coffee",
+    merchant = "DX Analytics",
     order = "#4182",
     date = "14 Oct 2026 · 08:42",
     items = DEFAULT_ITEMS,

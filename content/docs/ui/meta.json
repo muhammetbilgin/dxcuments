@@ -2,5 +2,5 @@
   "title": "DX UI",
   "description": "Design system components",
   "root": true,
-  "pages": ["index", "getting-started", "components", "hooks"]
+  "pages": ["index", "getting-started", "components", "blocks", "hooks"]
 }

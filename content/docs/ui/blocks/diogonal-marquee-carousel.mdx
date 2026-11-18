@@ -1,0 +1,46 @@
+---
+title: Diagonal Marquee Carousel
+description: Diagonal multi-row image marquee with fade edges.
+---
+
+A full-bleed diagonal image marquee. Multiple rows scroll in opposite directions with soft edge fades.
+
+## Preview
+
+<ComponentPreview className="p-0">
+  <DiagonalMarqueeCarouselDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="diogonal-marquee-carousel" />
+
+Also installs `utils`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="diogonal-marquee-carousel" />
+
+## Usage
+
+```tsx
+import DiagonalMarqueeCarousel from '@/components/ui/diogonal-marquee-carousel'
+
+export function Example() {
+  return <DiagonalMarqueeCarousel className="h-screen" />
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `cards` | `CardItem[]` | sample images | Cards with `id`, `url`, and `title` |
+| `angle` | `number` | `-25` | Tilt in degrees |
+| `duration` | `number` | `120` | Base row duration in seconds |
+| `alternateDirections` | `boolean` | `true` | Reverse every other row |
+| `className` | `string` | — | Root class name |
+| `cardClassName` | `string` | — | Classes for each card |
+| `fadeClassName` | `string` | — | Classes for top/bottom fades |

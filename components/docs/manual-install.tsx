@@ -28,7 +28,13 @@ const NOTES: Record<string, string> = {
     'Requires shadcn button and lucide-react in your project.',
   'dynamic-dock':
     'Requires lucide-react and motion. Export is Toolbar from dynamic-dock.',
-  'flick-card': 'Export is CardFlip from flick-card.',
+  'floating-dock-menu': 'Requires motion. Default export is FloatingDockMenu.',
+  'date-range-picker':
+    'Requires motion and lucide-react. Default export is DateRangePicker.',
+  'json-explorer':
+    'Requires lucide-react, motion, and shadcn button, tooltip, and input-group.',
+  'diogonal-marquee-carousel':
+    'Default export is DiagonalMarqueeCarousel. Filename keeps the diogonal spelling.',
   'responsive-dialog':
     'Requires use-is-desktop plus shadcn button, dialog, and drawer.',
   'use-debounce': 'Also install use-debounce-fn and its dependencies.',

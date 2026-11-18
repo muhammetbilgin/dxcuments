@@ -31,7 +31,7 @@ import ReceiptPrinter from '@/components/ui/receipt-printer'
 export function Example() {
   return (
     <ReceiptPrinter
-      merchant="Kokonut Coffee"
+      merchant="DX Analytics"
       order="#4182"
       onTear={() => console.log('torn')}
     />
@@ -43,7 +43,7 @@ export function Example() {
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| `merchant` | `string` | `"Kokonut Coffee"` | Header name |
+| `merchant` | `string` | `"DX Analytics"` | Header name |
 | `order` | `string` | `"#4182"` | Order id on the receipt |
 | `date` | `string` | `"14 Oct 2026 · 08:42"` | Date line |
 | `items` | `ReceiptItem[]` | sample menu | Line items (`name`, `quantity`, `price`) |

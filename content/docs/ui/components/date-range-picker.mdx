@@ -1,0 +1,56 @@
+---
+title: Date Range Picker
+description: Morphing trigger-to-panel date range picker with presets and keyboard support.
+---
+
+A range picker whose trigger grows into the panel it opens. Two months with a preset rail on wide layouts, or one month with a scrolling preset row when space is tight.
+
+## Preview
+
+<ComponentPreview>
+  <DateRangePickerDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="date-range-picker" />
+
+Requires `motion` and `lucide-react`. Also installs `utils`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="date-range-picker" />
+
+## Usage
+
+```tsx
+import DateRangePicker from '@/components/ui/date-range-picker'
+
+export function Example() {
+  return (
+    <DateRangePicker
+      onChange={(range) => console.log(range)}
+    />
+  )
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `DateRange \| null` | — | Controlled value; `null` for none |
+| `defaultValue` | `DateRange \| null` | `null` | Uncontrolled starting value |
+| `onChange` | `(range: DateRange) => void` | — | Called with the applied range |
+| `label` | `string` | `"Date range"` | Accessible name |
+| `placeholder` | `string` | `"Select dates"` | Trigger text when empty |
+| `presets` | `DateRangePreset[]` | built-in set | Shortcut rail items |
+| `minDate` | `Date` | — | Earliest selectable day |
+| `maxDate` | `Date` | — | Latest selectable day |
+| `weekStartsOn` | `0 \| 1` | `0` | `0` Sunday, `1` Monday |
+| `locale` | `string` | `"en-US"` | Formatting locale |
+| `months` | `"auto" \| 1 \| 2` | `"auto"` | Month layout |
+| `boundary` | `() => HTMLElement \| null` | viewport | Panel containment |
+| `className` | `string` | — | Root class name |

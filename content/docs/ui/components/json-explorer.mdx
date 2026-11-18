@@ -1,0 +1,51 @@
+---
+title: JSON Explorer
+description: Searchable JSON tree with expand/collapse, path copy, and keyboard navigation.
+---
+
+Browse nested JSON with search, path copy, and keyboard expand/collapse.
+
+## Preview
+
+<ComponentPreview>
+  <JsonExplorerDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="json-explorer" />
+
+Requires `lucide-react`, `motion`, and shadcn `button`, `tooltip`, and `input-group`. Also installs `utils`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="json-explorer" />
+
+## Usage
+
+```tsx
+import { JsonExplorer } from '@/components/ui/json-explorer'
+
+export function Example() {
+  return (
+    <JsonExplorer
+      data={{ hello: 'world', count: 3 }}
+      title="Payload"
+    />
+  )
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `data` | `JsonValue` | — | JSON value to explore |
+| `rootName` | `string` | `"data"` | Path prefix for the root node |
+| `defaultDepth` | `number` | `1` | Initial expand depth |
+| `defaultExpanded` | `string[]` | — | Paths expanded on mount |
+| `title` | `string` | — | Header label |
+| `onCopyPath` | `(path: string) => void` | — | Called after a path is copied |
+| `className` | `string` | — | Root class name |

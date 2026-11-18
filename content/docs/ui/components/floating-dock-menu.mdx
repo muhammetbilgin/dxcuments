@@ -1,0 +1,47 @@
+---
+title: Floating Dock Menu
+description: Bottom dock with expandable tab menus for toggles and actions.
+---
+
+A floating bottom dock. Select a tab to open its menu of toggles and actions; click again or outside to close.
+
+## Preview
+
+<ComponentPreview>
+  <FloatingDockMenuDemo />
+</ComponentPreview>
+
+## Install
+
+<InstallCommand name="floating-dock-menu" />
+
+Requires `motion`. Also installs `utils`.
+
+## Manual Installation
+
+Copy the files into your project when you prefer not to use the CLI.
+
+<ManualInstall name="floating-dock-menu" />
+
+## Usage
+
+```tsx
+import FloatingDockMenu from '@/components/ui/floating-dock-menu'
+
+export function Example() {
+  return <FloatingDockMenu />
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `tabs` | `NavTabItem[]` | built-in set | Tabs and their menu items |
+| `defaultActiveIndex` | `number \| null` | `null` | Initially open tab index |
+| `menuWidth` | `number` | `310` | Menu panel width in px |
+| `showIcons` | `boolean` | `true` | Show tab icons |
+| `onTabChange` | `(index: number \| null) => void` | — | Called when the open tab changes |
+| `onItemToggle` | `(tabId, itemId, enabled) => void` | — | Called when a toggle item flips |
+| `isFixed` | `boolean` | `true` | Pin to the viewport bottom |
+| `className` | `string` | — | Root class name |

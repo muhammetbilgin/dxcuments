@@ -6,10 +6,13 @@ import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 import { ComponentPreview } from '@/components/docs/component-preview';
 import { InstallCommand } from '@/components/docs/install-command';
 import { ManualInstall } from '@/components/docs/manual-install';
+import { DateRangePickerDemo } from '@/registry/examples/date-range-picker-demo';
+import { DiagonalMarqueeCarouselDemo } from '@/registry/examples/diogonal-marquee-carousel-demo';
 import { DynamicDockDemo } from '@/registry/examples/dynamic-dock-demo';
 import { ElasticSliderDemo } from '@/registry/examples/elastic-slider-demo';
 import { EmptyStateDemo } from '@/registry/examples/empty-state-demo';
-import { FlickCardDemo } from '@/registry/examples/flick-card-demo';
+import { FloatingDockMenuDemo } from '@/registry/examples/floating-dock-menu-demo';
+import { JsonExplorerDemo } from '@/registry/examples/json-explorer-demo';
 import { MiddleTruncationDemo } from '@/registry/examples/middle-truncation-demo';
 import { ReceiptPrinterDemo } from '@/registry/examples/receipt-printer-demo';
 import { ResponsiveDialogDemo } from '@/registry/examples/responsive-dialog-demo';
@@ -46,7 +49,10 @@ export function getMDXComponents(components?: MDXComponents) {
     EmptyStateDemo,
     TearButtonDemo,
     DynamicDockDemo,
-    FlickCardDemo,
+    FloatingDockMenuDemo,
+    DateRangePickerDemo,
+    JsonExplorerDemo,
+    DiagonalMarqueeCarouselDemo,
     ReceiptPrinterDemo,
     MiddleTruncationDemo,
     ResponsiveDialogDemo,

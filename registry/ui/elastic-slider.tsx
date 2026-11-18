@@ -214,7 +214,7 @@ export function ElasticSlider({
 
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
     e.preventDefault()
-    ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
+      ; (e.target as HTMLElement).setPointerCapture(e.pointerId)
 
     pointerDownPos.current = { x: e.clientX, y: e.clientY }
 
@@ -398,13 +398,13 @@ export function ElasticSlider({
 
       const left = labelEl
         ? ((LABEL_OFFSET + labelEl.offsetWidth + HANDLE_BUFFER) / trackWidth) *
-          100
+        100
         : 38
 
       const right = valueEl
         ? ((trackWidth - VALUE_OFFSET - valueEl.offsetWidth - HANDLE_BUFFER) /
-            trackWidth) *
-          100
+          trackWidth) *
+        100
         : 72
 
       setDodge((prev) => {
@@ -528,14 +528,14 @@ export function ElasticSlider({
             shouldReduceMotion
               ? { duration: 0 }
               : {
-                  scaleX: {
-                    type: "spring",
-                    visualDuration: 0.25,
-                    bounce: 0.15,
-                  },
-                  scaleY: { type: "spring", visualDuration: 0.2, bounce: 0.1 },
-                  opacity: { duration: 0.15 },
-                }
+                scaleX: {
+                  type: "spring",
+                  visualDuration: 0.25,
+                  bounce: 0.15,
+                },
+                scaleY: { type: "spring", visualDuration: 0.2, bounce: 0.1 },
+                opacity: { duration: 0.15 },
+              }
           }
         />
 

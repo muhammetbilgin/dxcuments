@@ -119,20 +119,6 @@
       ]
     },
     {
-      "name": "flick-card",
-      "type": "registry:ui",
-      "title": "Flick Card",
-      "description": "Physics flip card you can drag, flick, click, or key to turn.",
-      "registryDependencies": ["utils"],
-      "files": [
-        {
-          "path": "registry/ui/flick-card.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/flick-card.tsx"
-        }
-      ]
-    },
-    {
       "name": "receipt-printer",
       "type": "registry:ui",
       "title": "Receipt Printer",
@@ -143,6 +129,70 @@
           "path": "registry/ui/receipt-printer.tsx",
           "type": "registry:ui",
           "target": "components/ui/receipt-printer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "floating-dock-menu",
+      "type": "registry:ui",
+      "title": "Floating Dock Menu",
+      "description": "Bottom dock with expandable tab menus for toggles and actions.",
+      "dependencies": ["motion"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/ui/floating-dock-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/floating-dock-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "diogonal-marquee-carousel",
+      "type": "registry:ui",
+      "title": "Diagonal Marquee Carousel",
+      "description": "Diagonal multi-row image marquee with fade edges.",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/ui/diogonal-marquee-carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/diogonal-marquee-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "date-range-picker",
+      "type": "registry:ui",
+      "title": "Date Range Picker",
+      "description": "Morphing trigger-to-panel date range picker with presets and keyboard support.",
+      "dependencies": ["motion", "lucide-react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/ui/date-range-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/date-range-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "json-explorer",
+      "type": "registry:ui",
+      "title": "JSON Explorer",
+      "description": "Searchable JSON tree with expand/collapse, path copy, and keyboard navigation.",
+      "dependencies": ["lucide-react", "motion"],
+      "registryDependencies": [
+        "utils",
+        "https://ui.shadcn.com/r/button.json",
+        "https://ui.shadcn.com/r/tooltip.json",
+        "https://ui.shadcn.com/r/input-group.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/json-explorer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/json-explorer.tsx"
         }
       ]
     },
